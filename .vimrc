@@ -1,6 +1,7 @@
 set nu
+set relativenumber
+set background=dark
 set nocompatible              " required
-set backspace=indent,eol,start
 filetype off                  " required
 
 nmap <Tab> V>
@@ -29,6 +30,7 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tell-k/vim-autopep8'
+Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
@@ -59,7 +61,6 @@ syntax enable
 syntax on
 set hlsearch
 
-set background=dark
 colorscheme solarized
 "colorscheme zenburn
 "colorscheme desert
@@ -70,6 +71,9 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+nnoremap mu z<CR>
+nnoremap md z-
+nnoremap mm zz
 "nerdtree
 nmap <F2> :NERDTree  <CR>
 autocmd vimenter * NERDTree
@@ -103,8 +107,14 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 "indent line
-let g:indentLine_char='|'
-let g:indentLine_enabled = 1
+let g:indentLine_char='┆'
+let g:indentLine_enabled = 0
+
+let g:indent_guides_enable_on_vim_startup = 1
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
 
 "autopep8
 let g:autopep8_disable_show_diff=1
