@@ -1,7 +1,12 @@
 set nu
 set relativenumber
-set background=dark
 set nocompatible              " required
+set backspace=indent,eol,start
+"set cursorcolumn
+"set cursorline
+"highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+"highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=NONE guifg=NONE
+
 filetype off                  " required
 
 nmap <Tab> V>
@@ -30,8 +35,8 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'Yggdroot/indentLine'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'tell-k/vim-autopep8'
-Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'nathanaelkane/vim-indent-guides'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 
@@ -61,6 +66,7 @@ syntax enable
 syntax on
 set hlsearch
 
+set background=dark
 colorscheme solarized
 "colorscheme zenburn
 "colorscheme desert
@@ -75,7 +81,7 @@ nnoremap mu z<CR>
 nnoremap md z-
 nnoremap mm zz
 "nerdtree
-nmap <F2> :NERDTree  <CR>
+nmap <F3> :NERDTree  <CR>
 autocmd vimenter * NERDTree
 wincmd w
 autocmd vimenter * wincmd w
@@ -107,7 +113,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 "indent line
-let g:indentLine_char='┆'
+let g:indentLine_char='|'
 let g:indentLine_enabled = 0
 
 let g:indent_guides_enable_on_vim_startup = 1
@@ -115,13 +121,12 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
-
 "autopep8
 let g:autopep8_disable_show_diff=1
 autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
 
 "quick run
-map <F5> :call CompileRun()<CR>
+map <F1> :call CompileRun()<CR>
 func! CompileRun()
     exec "w"
     if &filetype == 'c'
@@ -134,7 +139,7 @@ func! CompileRun()
         exec "!javac %"
         exec "!time java %<"
     elseif &filetype == 'python'
-        exec "!time python3.5 %"
+        exec "!time python %"
     endif
 endfunc
 
