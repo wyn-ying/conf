@@ -37,6 +37,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tell-k/vim-autopep8'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'majutsushi/tagbar'
 " Add all your plugins here (note older versions of Vundle used Bundle instead of Plugin)
 
 
@@ -99,7 +100,8 @@ let NERDTreeIgnore=['\.pyc','\~$','\.swp']
 let NERDTreeShowBookmarks=1
 
 "nerdtree-git
-let g:NERDTreeIndicatorMapCustom = {
+"let g:NERDTreeIndicatorMapCustom = {
+let g:NERDTreeGitStatusIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
     \ "Untracked" : "✭",
@@ -147,6 +149,14 @@ endfunc
 let mapleader='\'
 map <F4> <leader>ci <CR>
 "\ci ->recomment
+
+"tagbar
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_right=1
+set tags=tags;
+set autochdir
+"ctrl+m开启文件tagbar（函数提示分屏）
+map <C-m> :TagbarToggle<CR>
 
 "YouCompleteMe Config
 nnoremap <leader>gl :YcmCompleter GoToDeclaration <CR>
